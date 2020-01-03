@@ -1,0 +1,29 @@
+* Modeling a noisy XOR with a single biological neuron
+Inspired the paper /Dendritic action potentials and computation in human layer 2/3 coritcal neruons/ by Gidon et al. (found [[https://science.sciencemag.org/content/367/6473/83][here]])
+
+Originally seen on Reddit post about a single layer of neurons learning the XOR function with a special activation function ([[https://science.sciencemag.org/content/367/6473/83][here]]).
+
+** Summary of main findings
+For application in Machine Learning, it looks like there is a kind of activation function used by the human brain that wasn't previously known. To summarize, the activation function has peak amplitude at the threshold value, but as the stimulus increases beyond the threshold value, the action potential response decreases, as shown in the following figure: 
+
+*** Result Summaries
+#+CAPTION: bAPs and dCaAPs in human dendrites of L2/3 neurons.
+#+NAME: fig:fig1
+[[./imgs/F1.large.jpg]]
+
+(original caption)
+
+(A) Experimental setting: L2/3 neuron at a depth of 1130 μm below the pial surface, with a somatic electrode and a dendritic electrode placed at 312 μm from the soma. (B) (i) Recordings from the cell in (A). bAPs in green (Vdend) and corresponding somatic APs in black (Vsoma) triggered by somatic current injection (Isoma) are shown. (ii) Somatic AP preceded the bAP [magnified from the frame in (i)]. (iii) bAPs in 16 dendrites (gray) and their average (green) aligned to their peak. (C) bAP amplitude (green dots) and exponential fit (length constant λbAP = 290 μm; n = 31 cells; dashed line) against distance from the soma. Gray area indicates the putative tuft region in layer 1 for the longest dendrite. (Inset) Delay of the bAP peak against distance from the soma with linear fit (r2 = 0.78, where r2 is the coefficient of determination). amp., amplitude; dist., distance. (D) (i) dCaAPs (Vdend; blue) triggered by a square current injected at the dendrite (Idend) and the resulting somatic AP (black) from the cell in (A). (ii) Somatic AP (in black) and a dCaAP (in blue) magnified from (i). The slow rising dCaAP (blue arrow) precedes the somatic AP. (iii) Initial dCaAP in each recording at threshold in the same 16 dendrites (gray) in (iii) of (B) and their average trace (blue) aligned to their peak. (E) dCaAP amplitude is independent of the distance from the soma (n = 28 cells). Linear fit is shown with the dashed line (r2 = 0.0009). (F) (Left) Coupled and simple dCaAPs (blue trace) and somatic APs (purple trace) triggered by Idend. (Right) Magnified dCaAP (in blue) and a somatic AP (in purple) framed in the traces on the left are shown. (G) (Top) Two coupled and complex dCaAPs (in red) triggered delayed somatic APs [in purple, magnified at (bottom)]. (H) Burst of simple and uncoupled dCaAPs in blue (top) with somatic APs (bottom).
+
+
+#+CAPTION: bAPs and dCaAPs in human dendrites of L2/3 neurons.
+#+NAME: fig:fig1
+[[./imgs/F1.large.jpg]]
+
+
+(original caption)
+
+(A) L2/3 pyramidal neuron with soma 886 μm below the pia. The somatic and dendritic electrodes are shown in black and blue, respectively. Recordings from this cell are shown in (B) and (C). (B) Dendritic current (Idend) injected 417 μm from the soma (i) and corresponding somatic (ii) and dendritic traces (iii). (ii) Idend of 260 and 275 pA, but neither smaller nor larger current, resulted in somatic APs. (iii) dCaAP amplitudes were maximal for Idend of 260 and 275 pA, whereas Idend > 275 pA dampened them. (iv) dCaAP (in blue) precedes the somatic AP (in gray); traces are magnified from the framed APs in (ii) and (iii). (C) Somatic current injection, Isoma (i), somatic AP trains (ii), and bAP (iii) for similar ranges of current intensity as those shown in (i) of (B). (iv) Somatic AP (in gray) precedes the dendritic bAP (in green); traces are magnified from the framed APs in (ii) and (iii). (D) Increase in Idend (i) dampened the dCaAPs’ amplitude (ii); vertical tick on each trace marks 50 ms after Idend onset. stim., stimulation; norm., normalized. (E) Amplitude of the first dCaAP in each trace against Idend normalized by rheobase (Irhe) for uncoupled dCaAPs (12 dendrites) and exponential fit (dashed line), with a decay constant (τdCaAP) of 0.39 (median 0.38) in units of rheobase. (F) dCaAP amplitudes as in (E) but not normalized by Irhe. Dots in different colors represent dCaAP amplitudes from different cell (12 dendrites) with exponential fit (dashed lines). (G) As in (D) but for somatic APs. Isoma, (i) and the resulting somatic APs (ii). (H) AP amplitude plotted against the normalized somatic input current strength (Isoma/Irhe). The amplitude of the somatic AP was fixed and did not depend on Isoma for a range of stimuli strengths as in (ii) of (G) (exponential fit with τAP = 82, units of somatic Irhe). (I) Dendritic and somatic activation functions for dCaAPs (blue curve) and for somatic APs (black curve).
+
+** Application
+How can we design an activation function that mimics this behavior in humans, and how can we learn an XOR function with just a single layer of neurons?
