@@ -1,5 +1,6 @@
 .*~
 *~
-lightning_logs/
-notebooks/.ipynb_checkpoints/*.ipynb
+lightning_logs
 .ipynb_checkpoints
+
+
