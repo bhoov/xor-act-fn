@@ -27,3 +27,11 @@ For application in Machine Learning, it looks like there is a kind of activation
 
 ** Application
 How can we design an activation function that mimics this behavior in humans, and how can we learn an XOR function with just a single layer of neurons?
+
+
+*** Sample Activation function
+NOTE: Needs to be perfectly differentiable.
+
+The activation function takes the form of a piecewise RBF kernel, of the form:
+
+$$a = \frac{c}{d}$$
