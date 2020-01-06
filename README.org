@@ -35,3 +35,8 @@ NOTE: Needs to be perfectly differentiable.
 The activation function takes the form of a piecewise RBF kernel, of the form:
 
 $$a = \frac{c}{d}$$
+** Getting Started
+1. *Create a conda environment*: =conda env create -f environment.yml=. If you want to use jupyter notebook to further explore the code, run =conda env update -f environment-dev.yml=.
+2. *Expose the code as a module*. From the root directory, run =pip install -e .=. 
+
+

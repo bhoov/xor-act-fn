@@ -1,0 +1,8 @@
+setup.py
+src/rbfxor/MLP.py
+src/rbfxor/__init__.py
+src/rbfxor/dataset.py
+src/rbfxor.egg-info/PKG-INFO
+src/rbfxor.egg-info/SOURCES.txt
+src/rbfxor.egg-info/dependency_links.txt
+src/rbfxor.egg-info/top_level.txt

@@ -1,7 +1,8 @@
 import torch
 import matplotlib.pyplot as plt
+from typing import Tuple
 
-def xor(x):
+def xor(x: torch.tensor) -> torch.tensor:
     """Given a 2D tensor x, return 1 if x[0] has different sign than x[1], otherwise return 0"""
     assert len(x.shape) == 2, "Expects 2 dimensional tensor!"
     assert x.shape[1] == 2, "Expect only 2 columns!"
@@ -19,6 +20,20 @@ def plot_xor_ds(x, y):
     plt.ylabel("X2")
     plt.title("Generated XOR dataset")
     plt.show()
+
+def true_xor() -> Tuple[torch.tensor, torch.tensor]:
+    """Get the traditional boolean (in this case, 1 and 0) xor facts as tensors"""
+    X = torch.tensor([
+        [0., 0.],
+        [0., 1.],
+        [1., 0.],
+        [1., 1.]])
+    Y = torch.tensor([
+        [0.],
+        [1.],
+        [1.],
+        [0.]])
+    return X, Y
 
 class XORDataset():
     """Create XOR dataset"""
