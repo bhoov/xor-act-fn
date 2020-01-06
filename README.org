@@ -40,3 +40,5 @@ $$a = \frac{c}{d}$$
 2. *Expose the code as a module*. From the root directory, run =pip install -e .=. 
 
 
+** Notes
+- I got better than expected results when I had a bug in my code s.t. every value <T was 1. 
