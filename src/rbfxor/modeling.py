@@ -50,7 +50,6 @@ def plot_model(model, X, y):
     
     return fig, ax
 
-    
 class BaseMLP(pl.LightningModule):
     def __init__(self, hdims, activation, final_act=nn.Sigmoid(), seed=42):
         """

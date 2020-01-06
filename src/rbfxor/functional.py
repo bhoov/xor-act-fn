@@ -24,7 +24,7 @@ def piecewise_rbf_forward(input, T, ep1, ep2):
     output = input.clone()
     below_T_inds = input < T
     above_T_inds = input >= T
-    
+
     output[below_T_inds] = gaussian_rbf(input-T, ep1)[below_T_inds]
     output[above_T_inds] = gaussian_rbf(input-T, ep2)[above_T_inds]
     return output
