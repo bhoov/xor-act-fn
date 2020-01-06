@@ -13,10 +13,10 @@ def gaussian_drbf(x, ep):
 
 def piecewise_rbf_forward(input, T, ep1, ep2):
     """Compute the piecewise activation function in the forward direction
-    
+
     Parameters:
     - T: Threshold at which the RBFs behave differently
-    - ep1: The epsilon parameter for the first half of the piecewise function. Assumed to be calculated by 
+    - ep1: The epsilon parameter for the first half of the piecewise function. Assumed to be calculated by
         'rbf_at_0' in the activation function module
     - ep2: The epsilon parameter of the 2nd half of hte piecewise function.
     """
@@ -31,7 +31,7 @@ def piecewise_rbf_forward(input, T, ep1, ep2):
 
 def piecewise_rbf_backward(input, T, ep1, ep2):
     """Calculate the backward pass for the rbf kernel.
-    
+
     Returns the gradient for each of the input values
     """
     output = input.clone()
@@ -48,7 +48,7 @@ class piecewise_rbf(Function):
     def forward(ctx, input, T, ep1, ep2):
         ctx.save_for_backward(input, T, ep1, ep2)
         return piecewise_rbf_forward(input, T, ep1, ep2)
-    
+
     @staticmethod
     def backward(ctx, grad_output):
         input, T, ep1, ep2 = ctx.saved_variables
@@ -61,15 +61,15 @@ class PiecewiseRBF(nn.Module):
         self.T = torch.tensor(T)
         self.rbf_at_0 = torch.tensor(rbf_at_0)
         self.ep2 = torch.tensor(ep2)
-        
+
     @property
     def ep1(self):
         """Calculate the ep1 from the 'rbf_at_0' parameter"""
         return 1./(2.*self.T) * torch.log(1/self.rbf_at_0)
-        
+
     def forward(self, x):
         return piecewise_rbf.apply(x, self.T, self.ep1, self.ep2)
-    
+
     def plot(self, xmin=-1, xmax=5):
         """Show a 1D plot of the activation function"""
         x = torch.linspace(xmin, xmax, 1000)

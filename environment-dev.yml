@@ -1,4 +1,7 @@
 name: rbfxor
+channels:
+  - conda-forge
 dependencies:
   - pytest
   - nb_conda
+  - jupyter_contrib_nbextensions

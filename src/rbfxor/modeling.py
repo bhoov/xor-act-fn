@@ -32,23 +32,24 @@ def create_mod_list(init_dim: int, out_dim: int, hdims: List[int], activation, f
     if final_act is not None: mod_list += [final_act]
     return nn.Sequential(*mod_list)
 
-def plot_model(model, X, y):
+def plot_model(model, X, y, ax=None):
     """Plot decision regions of the model atop a test dataset X and y"""
     cmap = plt.get_cmap("Paired")
-    
+   
     xs = np.linspace(-1.1, 1.1, 100)
     ys = np.linspace(-1.1, 1.1, 100)
     xx, yy = np.meshgrid(xs, ys)
+    
     input = torch.tensor([xx.ravel(), yy.ravel()]).T.float()
     z = model.forward(input).reshape(xx.shape).detach()
     z[z < 0.5] = 0
     z[z >= 0.5] = 1
-    
-    fig, ax = plt.subplots()
+
+    if ax is None: _, ax = plt.subplots()
     ax.contourf(xx, yy, z, cmap=cmap, alpha=0.5)
-    ax.scatter(X[:,0], X[:,1], c=y, cmap=cmap, lw=0)
+    ax.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap, lw=0)
     
-    return fig, ax
+    return ax
 
 class BaseMLP(pl.LightningModule):
     def __init__(self, hdims, activation, final_act=nn.Sigmoid(), seed=42):
@@ -117,7 +118,7 @@ class BaseMLP(pl.LightningModule):
         # can also return a list of test dataloaders
         return DataLoader(XORDataset(200, self.seed+2), batch_size=64, shuffle=False)
     
-    def plot(self, ds_type='test'):
+    def plot(self, ds_type='test', ax=None):
         """Plot the decision regions of the model. 
         
         Parameters:
@@ -130,4 +131,4 @@ class BaseMLP(pl.LightningModule):
         }
         ds = ds_map[ds_type]
         
-        plot_model(self, ds.X, ds.Y.flatten())
+        plot_model(self, ds.X, ds.Y.flatten(), ax)
