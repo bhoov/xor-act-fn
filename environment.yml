@@ -1,0 +1,12 @@
+name: rbfxor
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.7
+  - numpy
+  - pytorch
+  - pip
+  - matplotlib
+  - pip:
+    - pytorch_lightning

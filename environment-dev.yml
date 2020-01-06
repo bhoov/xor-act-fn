@@ -1,0 +1,4 @@
+name: rbfxor
+dependencies:
+  - pytest
+  - nb_conda
